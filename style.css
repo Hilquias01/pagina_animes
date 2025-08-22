@@ -1,0 +1,48 @@
+/* ---- Estilos Gerais ---- */
+body {
+    background-color: #121212; /* Um fundo escuro, já que você parece gostar :) */
+    color: #e0e0e0; /* Cor do texto principal (cinza claro) */
+    font-family: Arial, sans-serif; /* Uma fonte limpa e universal */
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- Título Principal ---- */
+h1 {
+    text-align: center; /* Centraliza o título */
+    color: #ffffff;
+    padding: 20px 0; /* Espaçamento acima e abaixo do título */
+    font-size: 2.5em; /* Tamanho da fonte (em = relativo ao tamanho padrão) */
+}
+
+/* ---- Container Principal (nosso <main>) ---- */
+main {
+    display: flex; /* ATIVA O FLEXBOX: o segredo do nosso layout! */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os cartões na página */
+    gap: 20px; /* Cria um espaço de 20px entre cada cartão */
+    padding: 20px; /* Um espaçamento nas bordas do container */
+}
+
+/* ---- Cartão de Anime (<section>) ---- */
+section {
+    background-color: #1e1e1e; /* Cor de fundo do cartão, um pouco mais clara que o body */
+    border: 1px solid #333; /* Uma borda sutil */
+    border-radius: 8px; /* Deixa as bordas arredondadas */
+    padding: 20px; /* Espaçamento interno do cartão */
+    width: 300px; /* Largura fixa para cada cartão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+}
+
+/* ---- Título do Anime (dentro do cartão) ---- */
+section h2 {
+    color: #bb86fc; /* Uma cor de destaque (roxo) */
+    margin-top: 0; /* Remove a margem de cima do título */
+    border-bottom: 2px solid #333; /* Uma linha separadora abaixo do título */
+    padding-bottom: 10px;
+}
+
+/* ---- Parágrafo de Texto (dentro do cartão) ---- */
+section p {
+    line-height: 1.6; /* Aumenta o espaçamento entre as linhas para facilitar a leitura */
+}
