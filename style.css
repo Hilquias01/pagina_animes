@@ -16,8 +16,8 @@ h1 {
     color: #ffffff;
     padding: 20px 0;
     font-size: 2.5em;
-    font-family: 'Bebas Neue', sans-serif; /* Usando a fonte importada também no título principal */
-    letter-spacing: 2px; /* Espaçamento entre as letras para dar mais estilo */
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
 }
 
 /* ---- Container Principal (nosso <main>) ---- */
@@ -25,7 +25,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; /* Aumentei um pouco o espaço entre os cards */
+    gap: 25px;
     padding: 20px;
 }
 
@@ -36,17 +36,15 @@ section {
     border-radius: 8px;
     width: 360px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer; /* (NOVO) Muda o cursor para uma "mãozinha" ao passar por cima */
-    
-    /* ---- (NOVO) A Mágica da Transição Suave ---- */
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* ---- (NOVO) Efeito Hover para o Cartão ---- */
+/* ---- Efeito Hover para o Cartão ---- */
 section:hover {
-    transform: scale(1.03); /* Aumenta o tamanho do card em 3% */
-    border-color: #bb86fc; /* Muda a cor da borda para o nosso roxo de destaque */
-    box-shadow: 0 8px 16px rgba(187, 134, 252, 0.2); /* Adiciona uma "sombra brilhante" roxa */
+    transform: scale(1.03);
+    border-color: #bb86fc;
+    box-shadow: 0 8px 16px rgba(187, 134, 252, 0.2);
 }
 
 /* ---- Imagem do Card ---- */
@@ -68,8 +66,8 @@ section img {
     margin-top: 0;
     border-bottom: 2px solid #333;
     padding-bottom: 10px;
-    font-family: 'Bebas Neue', sans-serif; /* (NOVO) Aplicando a fonte de pôster */
-    font-size: 2em; /* Aumentando o tamanho do título do anime */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2em;
     letter-spacing: 1.5px;
 }
 
@@ -77,4 +75,29 @@ section img {
 .card-content p {
     line-height: 1.6;
     font-size: 1.1em;
+}
+
+
+/* ---- (NOVO) MEDIA QUERIES PARA RESPONSIVIDADE ---- */
+
+/* Para telas médias - como tablets (até 1200px de largura) */
+@media (max-width: 1200px) {
+    section {
+        width: 45%; /* Faz com que cada card ocupe quase metade da tela, resultando em 2 colunas */
+    }
+}
+
+/* Para telas pequenas - como telemóveis (até 768px de largura) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Diminui um pouco o título principal */
+    }
+
+    section {
+        width: 90%; /* Faz com que cada card ocupe 90% da tela, resultando em 1 coluna */
+    }
+
+    .card-content h2 {
+        font-size: 1.8em; /* Diminui o título do anime */
+    }
 }
