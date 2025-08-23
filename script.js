@@ -42,3 +42,29 @@ modalOverlay.addEventListener('click', (event) => {
         closeModal();
     }
 });
+
+// ===== (NOVO) LÓGICA DA BARRA DE PESQUISA =====
+
+// 1. Pegar o elemento da barra de pesquisa
+const searchBar = document.getElementById('search-bar');
+
+// 2. Adicionar um "ouvinte de evento" que dispara toda vez que o usuário digita algo
+searchBar.addEventListener('input', (event) => {
+    // Pega o texto digitado e converte para minúsculas para não diferenciar maiúsculas/minúsculas
+    const searchTerm = event.target.value.toLowerCase();
+
+    // Pega todos os cartões de anime (já temos a constante 'cards' do código da modal)
+    cards.forEach(card => {
+        // Pega o título do anime de dentro do cartão e converte para minúsculas
+        const animeTitle = card.querySelector('h2').textContent.toLowerCase();
+
+        // Verifica se o título do anime INCLUI o texto que foi digitado
+        if (animeTitle.includes(searchTerm)) {
+            // Se incluir, mostra o cartão
+            card.style.display = 'block';
+        } else {
+            // Se não incluir, esconde o cartão
+            card.style.display = 'none';
+        }
+    });
+});

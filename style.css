@@ -1,5 +1,50 @@
-/* ---- (NOVO) Importação da Fonte do Google ---- */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* ---- ESTILOS DO CABEÇALHO / MENU ---- */
+header {
+    background-color: #1e1e1e;
+    padding: 15px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+header h1 {
+    font-size: 1.8em;
+    padding: 0;
+    margin: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+#search-bar {
+    width: 250px;
+    padding: 8px 12px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 20px;
+    color: #e0e0e0;
+    font-size: 1em;
+    outline: none;
+    transition: width 0.3s ease, border-color 0.3s ease;
+}
+
+#search-bar:focus {
+    width: 300px;
+    border-color: #bb86fc;
+}
 
 /* ---- Estilos Gerais ---- */
 body {
@@ -10,15 +55,7 @@ body {
     padding: 0;
 }
 
-/* ---- Título Principal ---- */
-h1 {
-    text-align: center;
-    color: #ffffff;
-    padding: 20px 0;
-    font-size: 2.5em;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-}
+/* O ESTILO ANTIGO "Título Principal h1" FOI REMOVIDO DAQUI */
 
 /* ---- Container Principal (nosso <main>) ---- */
 main {
@@ -77,45 +114,58 @@ section img {
     font-size: 1.1em;
 }
 
-
-/* ---- (NOVO) MEDIA QUERIES PARA RESPONSIVIDADE ---- */
+/* ---- MEDIA QUERIES PARA RESPONSIVIDADE ---- */
 
 /* Para telas médias - como tablets (até 1200px de largura) */
 @media (max-width: 1200px) {
     section {
-        width: 45%; /* Faz com que cada card ocupe quase metade da tela, resultando em 2 colunas */
+        width: 45%;
     }
 }
 
 /* Para telas pequenas - como telemóveis (até 768px de largura) */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2em; /* Diminui um pouco o título principal */
+    nav {
+        flex-direction: column; /* Coloca o título em cima da pesquisa */
+    }
+
+    #search-bar {
+        width: 100%; /* Faz a pesquisa ocupar toda a largura */
+        box-sizing: border-box; 
     }
 
     section {
-        width: 90%; /* Faz com que cada card ocupe 90% da tela, resultando em 1 coluna */
+        width: 90%;
     }
 
     .card-content h2 {
-        font-size: 1.8em; /* Diminui o título do anime */
+        font-size: 1.8em;
+    }
+    
+    .modal-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #modal-image {
+        width: 80%;
     }
 }
-/* ---- (NOVO) ESTILOS DA JANELA MODAL ---- */
 
+/* ---- ESTILOS DA JANELA MODAL ---- */
 .modal-overlay {
-    display: none; /* Começa escondido por padrão */
-    position: fixed; /* Fica fixo na tela, mesmo com rolagem */
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* Fundo preto semi-transparente */
+    background-color: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Garante que fique na frente de tudo */
+    z-index: 1000;
     padding: 20px;
-    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    box-sizing: border-box;
 }
 
 .modal-content {
@@ -124,10 +174,10 @@ section img {
     border-radius: 8px;
     position: relative;
     width: 90%;
-    max-width: 800px; /* Largura máxima da janela */
-    max-height: 90vh; /* Altura máxima para não ocupar a tela inteira */
-    overflow-y: auto; /* Adiciona uma barra de rolagem se o conteúdo for muito grande */
-    display: flex; /* Usamos flexbox para alinhar a imagem e o texto */
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
     gap: 20px;
 }
 
@@ -146,16 +196,4 @@ section img {
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-}
-
-/* Ajustes para a modal em telas pequenas */
-@media (max-width: 768px) {
-    .modal-content {
-        flex-direction: column; /* Coloca a imagem em cima do texto */
-        align-items: center; /* Centraliza a imagem */
-    }
-
-    #modal-image {
-        width: 80%; /* Ajusta a largura da imagem */
-    }
 }
