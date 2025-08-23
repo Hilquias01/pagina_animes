@@ -1,13 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* ---- ESTILOS DO CABEÇALHO / MENU ---- */
+/* ---- VARIÁVEIS DE DESIGN (TEMA ESCURO É O PADRÃO) ---- */
+:root {
+    /* Cores */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #ffffff;
+    --color-accent: #bb86fc;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    /* (NOVO) Cores para inputs */
+    --input-bg: #333;
+    --input-border: #555;
+
+    /* Fontes */
+    --font-body: Arial, sans-serif;
+    --font-display: 'Bebas Neue', sans-serif;
+}
+
+/* ---- DEFINIÇÕES DO TEMA CLARO ---- */
+body.light-theme {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #121212;
+    --text-secondary: #000000;
+    --color-accent: #6200ee;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    /* (NOVO) Cores para inputs no tema claro */
+    --input-bg: #e0e0e0;
+    --input-border: #ccc;
+}
+
+/* ---- ESTILOS GERAIS ---- */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ---- CABEÇALHO / MENU ---- */
 header {
-    background-color: #1e1e1e;
+    background-color: var(--bg-secondary);
     padding: 15px 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px var(--shadow-color);
     position: sticky;
     top: 0;
     z-index: 999;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 nav {
@@ -23,41 +67,38 @@ header h1 {
     font-size: 1.8em;
     padding: 0;
     margin: 0;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     letter-spacing: 2px;
-    color: #ffffff;
+    color: var(--text-secondary);
     white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 #search-bar {
     width: 250px;
     padding: 8px 12px;
-    background-color: #333;
-    border: 1px solid #555;
+    background-color: var(--input-bg); /* <-- CORRIGIDO */
+    border: 1px solid var(--input-border); /* <-- CORRIGIDO */
     border-radius: 20px;
-    color: #e0e0e0;
+    color: var(--text-primary);
     font-size: 1em;
     outline: none;
-    transition: width 0.3s ease, border-color 0.3s ease;
+    transition: width 0.3s ease, border-color 0.3s ease, background-color 0.3s;
 }
 
 #search-bar:focus {
     width: 300px;
-    border-color: #bb86fc;
+    border-color: var(--color-accent);
 }
 
-/* ---- Estilos Gerais ---- */
-body {
-    background-color: #121212;
-    color: #e0e0e0;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* O ESTILO ANTIGO "Título Principal h1" FOI REMOVIDO DAQUI */
-
-/* ---- Container Principal (nosso <main>) ---- */
+/* O resto do ficheiro continua exatamente igual... */
+/* ---- CONTAINER PRINCIPAL ---- */
 main {
     display: flex;
     flex-wrap: wrap;
@@ -66,25 +107,23 @@ main {
     padding: 20px;
 }
 
-/* ---- Cartão de Anime (<section>) ---- */
+/* ---- CARTÃO DE ANIME ---- */
 section {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     width: 360px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s;
 }
 
-/* ---- Efeito Hover para o Cartão ---- */
 section:hover {
     transform: scale(1.03);
-    border-color: #bb86fc;
-    box-shadow: 0 8px 16px rgba(187, 134, 252, 0.2);
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 16px hsla(from var(--color-accent) h s l / 20%);
 }
 
-/* ---- Imagem do Card ---- */
 section img {
     width: 100%;
     height: 510px;
@@ -92,45 +131,144 @@ section img {
     border-radius: 8px 8px 0 0;
 }
 
-/* ---- Conteúdo de Texto do Card ---- */
 .card-content {
     padding: 20px;
 }
 
-/* ---- Título do Anime (dentro do cartão) ---- */
 .card-content h2 {
-    color: #bb86fc;
+    color: var(--color-accent);
     margin-top: 0;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-display);
     font-size: 2em;
     letter-spacing: 1.5px;
 }
 
-/* ---- Parágrafo de Texto (dentro do cartão) ---- */
 .card-content p {
     line-height: 1.6;
     font-size: 1.1em;
 }
 
-/* ---- MEDIA QUERIES PARA RESPONSIVIDADE ---- */
+/* ---- INTERRUPTOR DE TEMA ---- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
 
-/* Para telas médias - como tablets (até 1200px de largura) */
+.theme-icon {
+    font-size: 28px;
+    margin-right: 10px;
+    color: var(--text-primary);
+    cursor: default;
+    transition: color 0.4s;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* ---- JANELA MODAL ---- */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    gap: 20px;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--text-secondary);
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-image {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* ---- RESPONSIVIDADE ---- */
 @media (max-width: 1200px) {
     section {
         width: 45%;
     }
 }
 
-/* Para telas pequenas - como telemóveis (até 768px de largura) */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Coloca o título em cima da pesquisa */
+        flex-direction: column;
     }
 
     #search-bar {
-        width: 100%; /* Faz a pesquisa ocupar toda a largura */
+        width: 100%;
         box-sizing: border-box; 
     }
 
@@ -150,50 +288,4 @@ section img {
     #modal-image {
         width: 80%;
     }
-}
-
-/* ---- ESTILOS DA JANELA MODAL ---- */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.modal-content {
-    background-color: #1e1e1e;
-    padding: 30px;
-    border-radius: 8px;
-    position: relative;
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    display: flex;
-    gap: 20px;
-}
-
-.modal-close-button {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#modal-image {
-    width: 300px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
 }
