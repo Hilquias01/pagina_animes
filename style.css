@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* ---- VARIÁVEIS DE DESIGN (TEMA ESCURO É O PADRÃO) ---- */
+/* ---- VARIÁVEIS DE DESIGN ---- */
 :root {
     /* Cores */
     --bg-primary: #121212;
@@ -10,7 +10,6 @@
     --color-accent: #bb86fc;
     --border-color: #333;
     --shadow-color: rgba(0, 0, 0, 0.3);
-    /* (NOVO) Cores para inputs */
     --input-bg: #333;
     --input-border: #555;
 
@@ -19,7 +18,7 @@
     --font-display: 'Bebas Neue', sans-serif;
 }
 
-/* ---- DEFINIÇÕES DO TEMA CLARO ---- */
+/* ---- TEMA CLARO ---- */
 body.light-theme {
     --bg-primary: #f5f5f5;
     --bg-secondary: #ffffff;
@@ -28,7 +27,6 @@ body.light-theme {
     --color-accent: #6200ee;
     --border-color: #e0e0e0;
     --shadow-color: rgba(0, 0, 0, 0.1);
-    /* (NOVO) Cores para inputs no tema claro */
     --input-bg: #e0e0e0;
     --input-border: #ccc;
 }
@@ -39,7 +37,7 @@ body {
     color: var(--text-primary);
     font-family: var(--font-body);
     margin: 0;
-    padding: 0;
+    padding: 0 0 100px 0; /* Espaço no fundo para o rodapé fixo */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -83,8 +81,8 @@ header h1 {
 #search-bar {
     width: 250px;
     padding: 8px 12px;
-    background-color: var(--input-bg); /* <-- CORRIGIDO */
-    border: 1px solid var(--input-border); /* <-- CORRIGIDO */
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
     border-radius: 20px;
     color: var(--text-primary);
     font-size: 1em;
@@ -97,8 +95,7 @@ header h1 {
     border-color: var(--color-accent);
 }
 
-/* O resto do ficheiro continua exatamente igual... */
-/* ---- CONTAINER PRINCIPAL ---- */
+/* ---- CONTEÚDO PRINCIPAL ---- */
 main {
     display: flex;
     flex-wrap: wrap;
@@ -107,7 +104,6 @@ main {
     padding: 20px;
 }
 
-/* ---- CARTÃO DE ANIME ---- */
 section {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
@@ -209,6 +205,55 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+/* ---- RODAPÉ ---- */
+footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 20px 30px;
+    border-top: 1px solid var(--border-color);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 998;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.social-container {
+    text-align: center;
+}
+
+.social-container h3 {
+    margin: 0 0 10px 0;
+    font-size: 1em;
+    font-weight: normal;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+}
+
+.social-links a {
+    color: var(--text-primary);
+    font-size: 24px;
+    margin: 0 10px;
+    transition: transform 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: var(--color-accent);
+    transform: scale(1.2);
+}
+
 /* ---- JANELA MODAL ---- */
 .modal-overlay {
     display: none;
@@ -287,5 +332,29 @@ input:checked + .slider:before {
 
     #modal-image {
         width: 80%;
+    }
+
+    footer {
+        flex-wrap: nowrap;
+        padding: 10px 15px;
+    }
+
+    footer p {
+        font-size: 0.75em;
+        flex-shrink: 1;
+    }
+
+    .social-container {
+        text-align: right;
+    }
+    
+    .social-container h3 {
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+
+    .social-links a {
+        font-size: 20px;
+        margin: 0 4px;
     }
 }
