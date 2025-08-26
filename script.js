@@ -52,32 +52,27 @@ searchBar.addEventListener('input', (event) => {
 
 
 // --- Lógica do Seletor de Tema ---
-
-// 1. Pegar os elementos
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
-const themeIcon = document.querySelector('.theme-icon'); // Pegamos o novo ícone
+const themeIcon = document.querySelector('.theme-icon');
 
-// 2. Função para aplicar o tema
 function applyTheme(theme) {
     if (theme === 'light') {
         body.classList.add('light-theme');
         themeToggle.checked = true;
-        themeIcon.textContent = 'dark_mode'; // (NOVO) Muda para o ícone de LUA
+        themeIcon.textContent = 'dark_mode';
     } else {
         body.classList.remove('light-theme');
         themeToggle.checked = false;
-        themeIcon.textContent = 'light_mode'; // (NOVO) Muda para o ícone de SOL
+        themeIcon.textContent = 'light_mode';
     }
 }
 
-// 3. Verificar se há um tema guardado no armazenamento local ao carregar a página
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     applyTheme(savedTheme);
 }
 
-// 4. Adicionar o "ouvinte de evento" para o clique no interruptor
 themeToggle.addEventListener('change', () => {
     if (themeToggle.checked) {
         applyTheme('light');
@@ -86,4 +81,25 @@ themeToggle.addEventListener('change', () => {
         applyTheme('dark');
         localStorage.setItem('theme', 'dark');
     }
+});
+
+
+// --- LÓGICA DO BOTÃO "VOLTAR AO TOPO" ---
+const backToTopButton = document.getElementById('back-to-top-btn');
+
+window.addEventListener('scroll', () => {
+    // Mostra o botão depois de 100px de rolagem
+    if (window.scrollY > 100) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    // Rola a página de volta para o topo com uma animação suave
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });

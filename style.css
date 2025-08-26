@@ -300,6 +300,35 @@ footer p {
     border-radius: 8px;
 }
 
+/* ---- BOTÃO VOLTAR AO TOPO ---- */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 115px; /* Ajustado para ficar acima do rodapé */
+    right: 30px;
+    z-index: 1000;
+    background-color: var(--color-accent);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 /* ---- RESPONSIVIDADE ---- */
 @media (max-width: 1200px) {
     section {
@@ -356,5 +385,12 @@ footer p {
     .social-links a {
         font-size: 20px;
         margin: 0 4px;
+    }
+
+    .back-to-top-btn {
+        bottom: 130px; /* Ajuste para mobile para não ficar em cima do rodapé que é maior */
+        right: 20px;
+        width: 45px;
+        height: 45px;
     }
 }
