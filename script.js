@@ -1,54 +1,25 @@
-// --- Lógica para a Janela Modal ---
-const cards = document.querySelectorAll('section');
-const modalOverlay = document.getElementById('modal-overlay');
-const modalImage = document.getElementById('modal-image');
-const modalTitle = document.getElementById('modal-title');
-const modalDescription = document.getElementById('modal-description');
-const closeButton = document.querySelector('.modal-close-button');
-
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const imageSrc = card.querySelector('img').src;
-        const title = card.querySelector('h2').textContent;
-        const description = card.querySelector('p').textContent;
-
-        modalImage.src = imageSrc;
-        modalTitle.textContent = title;
-        modalDescription.textContent = description;
-
-        modalOverlay.style.display = 'flex';
-    });
-});
-
-function closeModal() {
-    modalOverlay.style.display = 'none';
-}
-
-closeButton.addEventListener('click', closeModal);
-
-modalOverlay.addEventListener('click', (event) => {
-    if (event.target === modalOverlay) {
-        closeModal();
-    }
-});
-
-
-// --- Lógica da Barra de Pesquisa ---
+// --- Lógica da Barra de Pesquisa (AJUSTADA) ---
+// Seleciona os links que envolvem os cards
+const cardLinks = document.querySelectorAll('.card-link'); 
 const searchBar = document.getElementById('search-bar');
 
-searchBar.addEventListener('input', (event) => {
-    const searchTerm = event.target.value.toLowerCase();
+// A lógica de pesquisa só deve ser executada se a barra de pesquisa existir na página
+if (searchBar) { 
+    searchBar.addEventListener('input', (event) => {
+        const searchTerm = event.target.value.toLowerCase();
 
-    cards.forEach(card => {
-        const animeTitle = card.querySelector('h2').textContent.toLowerCase();
+        cardLinks.forEach(link => {
+            // Pega o título de dentro do link
+            const animeTitle = link.querySelector('h2').textContent.toLowerCase();
 
-        if (animeTitle.includes(searchTerm)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+            if (animeTitle.includes(searchTerm)) {
+                link.style.display = 'block'; // Mostra ou esconde o link (que contém o card)
+            } else {
+                link.style.display = 'none';
+            }
+        });
     });
-});
+}
 
 
 // --- Lógica do Seletor de Tema ---
@@ -59,29 +30,33 @@ const themeIcon = document.querySelector('.theme-icon');
 function applyTheme(theme) {
     if (theme === 'light') {
         body.classList.add('light-theme');
-        themeToggle.checked = true;
-        themeIcon.textContent = 'dark_mode';
+        if (themeToggle) themeToggle.checked = true;
+        if (themeIcon) themeIcon.textContent = 'dark_mode';
     } else {
         body.classList.remove('light-theme');
-        themeToggle.checked = false;
-        themeIcon.textContent = 'light_mode';
+        if (themeToggle) themeToggle.checked = false;
+        if (themeIcon) themeIcon.textContent = 'light_mode';
     }
 }
 
+// Verifica se o seletor de tema existe antes de adicionar o listener
+if (themeToggle) {
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            applyTheme('light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            applyTheme('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+}
+
+// Aplica o tema salvo ao carregar a página
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     applyTheme(savedTheme);
 }
-
-themeToggle.addEventListener('change', () => {
-    if (themeToggle.checked) {
-        applyTheme('light');
-        localStorage.setItem('theme', 'light');
-    } else {
-        applyTheme('dark');
-        localStorage.setItem('theme', 'dark');
-    }
-});
 
 
 // --- LÓGICA DO BOTÃO "VOLTAR AO TOPO" ---
@@ -90,16 +65,18 @@ const backToTopButton = document.getElementById('back-to-top-btn');
 window.addEventListener('scroll', () => {
     // Mostra o botão depois de 100px de rolagem
     if (window.scrollY > 100) {
-        backToTopButton.classList.add('show');
+        if (backToTopButton) backToTopButton.classList.add('show');
     } else {
-        backToTopButton.classList.remove('show');
+        if (backToTopButton) backToTopButton.classList.remove('show');
     }
 });
 
-backToTopButton.addEventListener('click', () => {
-    // Rola a página de volta para o topo com uma animação suave
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (backToTopButton) {
+    backToTopButton.addEventListener('click', () => {
+        // Rola a página de volta para o topo com uma animação suave
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}

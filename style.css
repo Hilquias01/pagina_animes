@@ -114,14 +114,25 @@ section {
     border-radius: 8px;
     width: 360px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    /* O cursor pointer é agora controlado pelo card-link */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s;
 }
 
-section:hover {
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Garante que o link ocupe o espaço corretamente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px; /* Adiciona borda arredondada para a sombra */
+}
+
+.card-link:hover {
     transform: scale(1.03);
-    border-color: var(--color-accent);
     box-shadow: 0 8px 16px hsla(from var(--color-accent) h s l / 20%);
+}
+
+.card-link:hover section {
+    border-color: var(--color-accent);
 }
 
 section img {
@@ -258,7 +269,7 @@ footer p {
     transform: scale(1.2);
 }
 
-/* ---- JANELA MODAL ---- */
+/* ---- JANELA MODAL (NÃO USADA, MAS MANTIDA) ---- */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -335,8 +346,11 @@ footer p {
 
 /* ---- RESPONSIVIDADE ---- */
 @media (max-width: 1200px) {
-    section {
+    .card-link { /* Ajuste para o link */
         width: 45%;
+    }
+    section { /* A section agora tem 100% do link */
+        width: 100%;
     }
 }
 
@@ -350,12 +364,8 @@ footer p {
         box-sizing: border-box; 
     }
 
-    section {
+    .card-link { /* Ajuste para o link */
         width: 90%;
-    }
-
-    .card-content h2 {
-        font-size: 1.8em;
     }
     
     .modal-content {
@@ -399,7 +409,7 @@ footer p {
     }
 }
 
-/* ---- NOVOS ESTILOS ---- */
+/* ---- ESTILOS DAS PÁGINAS ESTÁTICAS E FOOTER ---- */
 .footer-links {
     text-align: center;
     width: 100%;
@@ -445,5 +455,62 @@ footer p {
     }
     footer {
         justify-content: space-between;
+    }
+}
+
+/* ---- NOVOS ESTILOS PARA A PÁGINA DE DETALHES ---- */
+.anime-detail-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+}
+
+.anime-header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.anime-poster {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.anime-info h1 {
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 3em;
+    letter-spacing: 1.5px;
+    margin: 0 0 20px 0;
+}
+
+.info-item {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.anime-content h2 {
+    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 2.2em;
+    letter-spacing: 1.5px;
+    margin-top: 30px;
+}
+
+.anime-content p {
+    line-height: 1.8;
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+@media (min-width: 768px) {
+    .anime-header {
+        flex-direction: row;
     }
 }
