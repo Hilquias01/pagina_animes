@@ -514,3 +514,56 @@ footer p {
         flex-direction: row;
     }
 }
+
+/* ---- ESTILOS PARA O FORMULÁRIO DE CONTATO ---- */
+.contact-form {
+    margin-top: 30px;
+}
+
+.contact-form p {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    color: var(--text-primary);
+    font-size: 1em;
+    font-family: var(--font-body); /* Garante que a fonte seja a mesma do site */
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.contact-form button {
+    background-color: var(--color-accent);
+    color: var(--text-secondary);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-family: var(--font-display); /* Usa a fonte de destaque */
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.contact-form button:hover {
+    opacity: 0.85;
+}

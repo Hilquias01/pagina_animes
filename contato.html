@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
     <title>Contato | Meu Catálogo de Animes</title> 
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2620322237471650"
+         crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -28,14 +31,23 @@
         <div class="page-content">
             <h1>Entre em Contato</h1>
             <p>
-                Gostou do site? Tem alguma sugestão de anime para adicionar ao catálogo, encontrou algum erro ou quer apenas trocar uma ideia?
+                Gostou do site? Tem alguma sugestão de anime para adicionar ao catálogo, encontrou algum erro ou quer apenas trocar uma ideia? Preencha o formulário abaixo para enviar uma mensagem diretamente para mim. Ficarei feliz em responder!
             </p>
-            <p>
-                A melhor forma de entrar em contato comigo é através das minhas redes sociais, que estão disponíveis no rodapé desta página. Conecte-se comigo pelo LinkedIn para assuntos profissionais ou me siga no Instagram e GitHub para acompanhar outros projetos.
-            </p>
-            <p>
-                Sua opinião é muito importante para o crescimento deste projeto. Obrigado pela visita!
-            </p>
+            
+            <form name="contato" method="POST" action="/obrigado" data-netlify="true" class="contact-form">
+                <p>
+                    <label>Seu Nome: <input type="text" name="name" required /></label>
+                </p>
+                <p>
+                    <label>Seu Email: <input type="email" name="email" required /></label>
+                </p>
+                <p>
+                    <label>Mensagem: <textarea name="message" rows="5" required></textarea></label>
+                </p>
+                <p>
+                    <button type="submit">Enviar Mensagem</button>
+                </p>
+            </form>
         </div>
     </main>
     
@@ -49,9 +61,9 @@
         <div class="social-container">
             <h3>Minhas Redes</h3>
             <div class="social-links">
-                <a href="https://www.instagram.com/hilquias0/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/Hilquias01" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/hilquiassantana/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hilquias0/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/Hilquias01" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hilquiassantana/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
