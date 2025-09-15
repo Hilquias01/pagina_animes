@@ -567,3 +567,16 @@ footer p {
 .contact-form button:hover {
     opacity: 0.85;
 }
+/* ---- Estilos para Contêiner de Anúncios ---- */
+.ad-container {
+    margin: 20px auto;
+    padding: 0 20px;
+    max-width: 900px; /* Ajuste a largura máxima conforme seu layout */
+    box-sizing: border-box;
+}
+
+/* Espaçamento para anúncios dentro do texto */
+.anime-content .adsbygoogle {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
